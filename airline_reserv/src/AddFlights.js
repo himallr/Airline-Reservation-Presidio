@@ -23,11 +23,11 @@ const AddFlights = () => {
             inputValue = e.target.value;
             isValidInput = /^[a-zA-Z\s]+$/.test(inputValue);
         }
-
-        setInputs((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
+        if (isValidInput !== 0)
+            setInputs((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }));
 
     };
     const showSuccessToast = (message) => {

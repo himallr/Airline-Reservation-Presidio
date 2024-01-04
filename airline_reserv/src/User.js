@@ -11,8 +11,8 @@ const User = () => {
     const getData = (datas) => {
         addUser(datas.inputs, datas.signup)
             .then((data) => {
-                if (data.message === "Incorrrect Password") {
-                    console.log(data.message);
+                if (data.message === "Unable to find user") {
+                    alert("Incorrect");
                 }
                 else {
                     dispatch(userActions.login())
