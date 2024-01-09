@@ -8,6 +8,6 @@ flightRoute.get("/:id", getFlightByID);
 flightRoute.post("/addFlight", addFlight);
 flightRoute.put("/updateFlight/:id", updateFlight);
 flightRoute.delete("/delete/:id", deleteFlightSchedule);
-flightRoute.get("/Search", SearchFlight);
+flightRoute.get("/Search/SDD", SearchFlight);
 
 export default flightRoute;
