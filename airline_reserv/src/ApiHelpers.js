@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const addUser = async (datas, signup) => {
-    const res = await axios.post(`http://localhost:3001/user/${signup ? "login" : "signup"}`, {
+    const res = await axios.post(`https://airline-reservation-server.vercel.app/user/${signup ? "login" : "signup"}`, {
         Name: signup ? "" : datas.Name,
         Email: datas.Email,
         Password: datas.Password
@@ -18,7 +18,7 @@ export const addUser = async (datas, signup) => {
 }
 
 export const addAdmin = async (datas, signup) => {
-    const res = await axios.post("http://localhost:3001/admin/login", {
+    const res = await axios.post("https://airline-reservation-server.vercel.app/admin/login", {
         Email: datas.Email,
         Password: datas.Password
     })
@@ -34,7 +34,7 @@ export const addAdmin = async (datas, signup) => {
 }
 
 export const getAdminById = async (id) => {
-    const res = await axios.get(`http://localhost:3001/admin/${id}`)
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/admin/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -48,7 +48,7 @@ export const getAdminById = async (id) => {
 
 //flights
 export const getFlights = async () => {
-    const res = await axios.get("http://localhost:3001/flight/")
+    const res = await axios.get("https://airline-reservation-server.vercel.app/flight/")
         .catch((e) => {
             console.log(e);
         })
@@ -61,7 +61,7 @@ export const getFlights = async () => {
 }
 
 export const getFlightDetails = async (id) => {
-    const res = await axios.get(`http://localhost:3001/flight/${id}`)
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/flight/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -74,7 +74,7 @@ export const getFlightDetails = async (id) => {
 }
 
 export const addFlight = async (datas) => {
-    const res = await axios.post("http://localhost:3001/flight/addFlight", {
+    const res = await axios.post("https://airline-reservation-server.vercel.app/flight/addFlight", {
         Flight_No: datas.Flight_No,
         Flight_Name: datas.Flight_Name,
         Source: datas.Source,
@@ -102,7 +102,7 @@ export const addFlight = async (datas) => {
 }
 
 export const updateFlights = async (id, datas) => {
-    const res = await axios.put(`http://localhost:3001/flight/updateFlight/${id}`, {
+    const res = await axios.put(`https://airline-reservation-server.vercel.app/flight/updateFlight/${id}`, {
         Flight_Name: datas.Flight_Name,
         Timings: datas.Timings,
         Max_seats: datas.Max_seats,
@@ -120,7 +120,7 @@ export const updateFlights = async (id, datas) => {
 }
 
 export const getFlightName = async (filter) => {
-    const res = await axios.get(`http://localhost:3001/flight/Search?filter=${filter}`)
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/flight/Search?filter=${filter}`)
         .catch((e) => {
             console.log(e);
         })
@@ -133,7 +133,7 @@ export const getFlightName = async (filter) => {
 }
 
 export const removeFlight = async (id) => {
-    const res = await axios.delete(`http://localhost:3001/flight/delete/${id}`)
+    const res = await axios.delete(`https://airline-reservation-server.vercel.app/flight/delete/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -147,7 +147,7 @@ export const removeFlight = async (id) => {
 
 //Bookings
 export const getBookings = async () => {
-    const res = await axios.get("http://localhost:3001/booking/")
+    const res = await axios.get("https://airline-reservation-server.vercel.app/booking/")
         .catch((e) => {
             console.log(e);
         })
@@ -160,7 +160,7 @@ export const getBookings = async () => {
 }
 
 export const getBookingsByID = async (id) => {
-    const res = await axios.get(`http://localhost:3001/booking/${id}`)
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/booking/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -173,7 +173,7 @@ export const getBookingsByID = async (id) => {
 }
 
 export const getBookingsfromUser = async (id) => {
-    const res = await axios.get(`http://localhost:3001/booking/fromUser/${id}`)
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/booking/fromUser/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -186,7 +186,7 @@ export const getBookingsfromUser = async (id) => {
 }
 
 export const BookFlight = async (id, booking, Passenger, user) => {
-    const res = await axios.post("http://localhost:3001/booking/", {
+    const res = await axios.post("https://airline-reservation-server.vercel.app/booking/", {
         flights: id,
         date: booking.date,
         no_of_seats: booking.no_of_seats,
@@ -205,7 +205,7 @@ export const BookFlight = async (id, booking, Passenger, user) => {
 }
 
 export const cancelTicket = async (id) => {
-    const res = await axios.delete(`http://localhost:3001/booking/Cancel/${id}`)
+    const res = await axios.delete(`https://airline-reservation-server.vercel.app/booking/Cancel/${id}`)
         .catch((e) => {
             console.log(e);
         })
