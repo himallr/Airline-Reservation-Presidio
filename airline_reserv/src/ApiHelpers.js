@@ -145,6 +145,19 @@ export const removeFlight = async (id) => {
     return resData;
 }
 
+export const filterSearch = async (flightClass, source, destination) => {
+    const res = await axios.get(`https://airline-reservation-server.vercel.app/flight/Search/SDD/?flightClass=${flightClass}&source=${source}&destination=${destination}`)
+        .catch((e) => {
+            console.log(e);
+        })
+    if (res.status === 500) {
+        return console.log("Unexpected error");
+    }
+    console.log(res.data);
+    const resData = await res.data
+    return resData;
+}
+
 //Bookings
 export const getBookings = async () => {
     const res = await axios.get("https://airline-reservation-server.vercel.app/booking/")
