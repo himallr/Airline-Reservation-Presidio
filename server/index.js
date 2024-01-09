@@ -21,7 +21,7 @@ app.use("/admin", AdminRouter);
 app.use("/flight", flightRoute);
 app.use("/booking", bookingRouter);
 
-mongoose.connect(`mongodb+srv://himallr2003:${process.env.PASSWORD}@cluster0.mazfjhw.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://himallr2003:${process.env.PASSWORD}@cluster0.mazfjhw.mongodb.net/test?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(3001, () => {
             console.log("Connected to mongodb and Listening to port 3001");
