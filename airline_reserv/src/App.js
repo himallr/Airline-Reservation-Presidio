@@ -53,6 +53,7 @@ function App() {
         <Route path="/view" element={<ViewFlights />}></Route>
         <Route path="/Bookings" element={<Bookings />}></Route>
         <Route path="/Book" element={<BookFlight />}></Route>
+        <Route path="/BookFlights" element={<BookFlights />}></Route>
         <Route path="/Book/:id" element={<Book />}></Route>
         <Route path="/Passenger/:id" element={<PassengerDetails />}></Route>
       </Routes>
