@@ -12,18 +12,10 @@ const ViewFlights = () => {
             })
     }, [])
 
-    // Parse the string into a Date object
-    // const dateTime = new Date(dateTimeString);
-
-    // // Get the time part as a string
-    // const timeString = dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-    // console.log(timeString);
-
     return (
         <div className='conatiner'>
             <div className='row px-4 mt-5 mb-5'>
-            <h2 className='text-primary text-bold text-center'>View Flights</h2>
+                <h2 className='text-primary text-bold text-center'>View Flights</h2>
                 <table className="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -32,6 +24,7 @@ const ViewFlights = () => {
                             <th>Flight Name</th>
                             <th>Source</th>
                             <th>Destination</th>
+                            <th>Flight Class</th>
                             <th>Check In</th>
                             <th>Price</th>
                         </tr>
@@ -45,6 +38,7 @@ const ViewFlights = () => {
                                     <td className="p-3">{item.Flight_Name}</td>
                                     <td className="p-3">{item.Source}</td>
                                     <td className="p-3">{item.Destination}</td>
+                                    <td className="p-3">{item.Classes}</td>
                                     <td className="p-3">{item.Timings}</td>
                                     <td className="p-3">{item.Pricing}</td>
                                 </tr>
