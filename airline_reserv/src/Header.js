@@ -36,7 +36,7 @@ const Header = () => {
                                     <Link className="nav-link text-black" to="/View">Flight Schedules</Link>
                                 </li>
                                 <li className="nav-item mx-2 my-2">
-                                    <Link className="nav-link text-black" to="/Book">Book Flights</Link>
+                                    <Link className="nav-link text-black" to="/BookFlights">Book Flights</Link>
                                 </li>
                                 <li className="nav-item mx-2 my-2">
                                     <Link className="nav-link text-black" to="/Bookings">Bookings</Link>
