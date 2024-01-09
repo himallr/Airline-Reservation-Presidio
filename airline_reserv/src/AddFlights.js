@@ -13,7 +13,7 @@ const AddFlights = () => {
         Timings: "",
         Max_seats: "",
         Pricing: "",
-        Classes: ""
+        Classes: "Economy Class"
     });
 
     const handleChange = (e) => {
