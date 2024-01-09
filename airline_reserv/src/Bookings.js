@@ -27,7 +27,7 @@ const Bookings = () => {
                                 <div className="card mt-4 mb-4">
                                     <div className="card-body row">
                                         <div className="col-md-6">
-                                            <h5 className="card-title">Flight Details: {item.flights.Flight_Name}</h5>
+                                            <h5 className="card-title">Flight Details: {item.flights.Flight_Name} - {item.flights.Classes}</h5>
                                             <div className="card-text border-right">
                                                 <p className="mb-1">
                                                     <strong>Flight Source:</strong> {item.flights.Source}
@@ -53,16 +53,16 @@ const Bookings = () => {
                                             <h5 className="card-title">Passenger Details: </h5>
                                             <div className="card-text">
                                                 <p className="mb-1">
-                                                    <strong>Passenger Name:</strong> {item.Passenger && item.Passenger.firstName + " " + item.Passenger.lastName}
+                                                    <strong>Passenger Name:</strong> {item.Passenger.firstName + " " + item.Passenger.lastName}
                                                 </p>
                                                 <p className="mb-1">
-                                                    <strong>Age:</strong> {item.Passenger && item.Passenger.Age}
+                                                    <strong>Age:</strong> {item.Passenger.Age}
                                                 </p>
                                                 <p className="mb-1">
-                                                    <strong>Phone Number:</strong> {item.Passenger && item.Passenger.Phn_No}
+                                                    <strong>Phone Number:</strong> {item.Passenger.Phn_No}
                                                 </p>
                                             </div>
-                                            <button className='btn btn-secondary' onClick={() => cancel(item._id)}>Cancel Ticket</button>
+                                            <button className='btn btn-secondary mt-4' onClick={() => cancel(item._id)}>Cancel Ticket</button>
                                         </div>
 
                                     </div>

@@ -7,7 +7,7 @@ export const addUser = async (datas, signup) => {
         Password: datas.Password
     })
         .catch((e) => {
-            console.log(e);
+            console.log("Enter Correct Username or Password!");
         })
     if (res.status === 500) {
         return console.log("Unexpected error");
@@ -23,7 +23,7 @@ export const addAdmin = async (datas, signup) => {
         Password: datas.Password
     })
         .catch((e) => {
-            console.log(e);
+            alert("Enter Correct Username or Password!");
         })
     if (res.status === 500) {
         return console.log("Unexpected error");

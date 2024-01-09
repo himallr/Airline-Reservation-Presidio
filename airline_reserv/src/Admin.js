@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { adminActions } from './Store'
 import Login from './Login'
 import { addAdmin } from './ApiHelpers'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -11,8 +12,8 @@ const Admin = () => {
     const getData = (datas) => {
         addAdmin(datas.inputs, datas.signup)
             .then((data) => {
-                if (data.message === "Incorrrect Password") {
-                    console.log(data.message);
+                if (data.message === "No Admin Found!" || data.message === "Incorrect password") {
+                    showSuccessToast(data.message)
                 }
                 else {
                     dispatch(adminActions.login())
@@ -24,9 +25,17 @@ const Admin = () => {
             })
     }
 
+    const showSuccessToast = (message) => {
+        toast.warning(message);
+    };
+
     return (
         <div>
             <Login OnSubmit={getData} isAdmin={true} />
+            <ToastContainer
+                position="top-center"
+                autoClose="500"
+            />
         </div>
     )
 }

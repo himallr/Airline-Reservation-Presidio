@@ -26,12 +26,18 @@ export const createBooking = async (req, res, next) => {
     }
     let newbooking;
     try {
+        const remainingSeats = existflight.Max_seats - no_of_seats;
+
+        if (remainingSeats < 0) {
+            return res.status(400).json({ message: "Not enough seats available" });
+        }
         newbooking = new Bookings({ flights, date, no_of_seats, Passenger, user });
         console.log(newbooking);
         const session = await mongoose.startSession();
         session.startTransaction();
         existflight.bookings.push(newbooking);
         existuser.bookings.push(newbooking);
+        existflight.Max_seats = remainingSeats;
         await existuser.save({ session });
         await existflight.save({ session });
         await newbooking.save({ session });
@@ -108,6 +114,7 @@ export const deleteBookings = async (req, res, next) => {
         console.log(booking);
         const session = await mongoose.startSession();
         session.startTransaction();
+        booking.flights.Max_seats += booking.no_of_seats;
         await booking.user.bookings.pull(booking);
         await booking.flights.bookings.pull(booking);
         await booking.flights.save({ session });

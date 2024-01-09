@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { userActions } from './Store'
 import Login from './Login'
 import { addUser } from './ApiHelpers'
+import { ToastContainer, toast } from 'react-toastify';
 
 const User = () => {
     const dispatch = useDispatch();
@@ -11,8 +12,8 @@ const User = () => {
     const getData = (datas) => {
         addUser(datas.inputs, datas.signup)
             .then((data) => {
-                if (data.message === "Unable to find user") {
-                    alert("Incorrect");
+                if (data.message === "No User Found!" || data.message === "Incorrect Password!") {
+                    showSuccessToast(data.message)
                 }
                 else {
                     dispatch(userActions.login())
@@ -23,9 +24,17 @@ const User = () => {
             })
     }
 
+    const showSuccessToast = (message) => {
+        toast.warning(message);
+    };
+
     return (
         <div>
             <Login OnSubmit={getData} isAdmin={false} />
+            <ToastContainer
+                position="top-center"
+                autoClose="500"
+            />
         </div>
     )
 }

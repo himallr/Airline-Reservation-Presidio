@@ -19,7 +19,8 @@ const BookFlight = () => {
     }
     return (
         <div className='conatiner'>
-            <div className='row mt-4 px-4 mb-5'>
+            <div className='row mt-5 px-4 mb-5'>
+                <h2 className='text-primary text-bold text-center'>Book Flights</h2>
                 <table className="table table-bordered table-striped">
                     <thead>
                         <tr>

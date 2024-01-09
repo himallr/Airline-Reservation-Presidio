@@ -23,6 +23,7 @@ const ViewFlights = () => {
     return (
         <div className='conatiner'>
             <div className='row px-4 mt-5 mb-5'>
+            <h2 className='text-primary text-bold text-center'>View Flights</h2>
                 <table className="table table-bordered table-striped">
                     <thead>
                         <tr>

@@ -67,10 +67,11 @@ export const loginUser = async (req, res, next) => {
 
     console.log(users);
     if (!users) {
-        return res.sendStatus(400).json({ message: "Unable to find user" });
+        return res.json({ message: "No User Found!" });
     }
 
     const isPasswordCorrect = bcrypt.compareSync(Password, users.Password);
     if (isPasswordCorrect)
         return res.status(200).json({ message: "Successfull", id: users._id });
+    return res.json({message: "Incorrect Password!"})
 }

@@ -26,6 +26,7 @@ const Login = ({ OnSubmit, isAdmin }) => {
 
     return (
         <Container className="mt-5">
+            
             <div className="w-60 mx-auto p-4 border rounded">
                 {signin ? <div className='h3 text-center'>LOGIN PAGE</div> : <div className='h3 text-center'>SIGNUP PAGE</div>}
                 <Form style={{ maxWidth: '300px', margin: '0 auto' }} onSubmit={handleSubmit}>
@@ -73,7 +74,7 @@ const Login = ({ OnSubmit, isAdmin }) => {
                             </div>
                             :
                             <div class="col">
-                                Already have an account?<Link className='text-secondary'onClick={() => setSignin(true)}>login</Link>
+                                Already have an account?<Link className='text-secondary' onClick={() => setSignin(true)}>login</Link>
                             </div>
                         }
                     </>

@@ -83,4 +83,5 @@ export const loginAdmin = async (req, res, next) => {
             return res.json({ message: "Incorrect password" });
         }
     }
+    return res.json({message: "No Admin Found!"})
 }
