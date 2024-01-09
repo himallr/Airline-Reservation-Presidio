@@ -9,7 +9,11 @@ import bookingRouter from './routes/bookingRoute.js';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ["https://airline-reservation-rho.vercel.app"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json());
 
 app.use("/user", userRoute);
