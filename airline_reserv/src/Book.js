@@ -62,7 +62,7 @@ const Book = () => {
     return (
         <div className='container'>
             <div className='row mt-5 mb-4 d-flex justify-content-center'>
-                <h1 className='text-center'>Flight Name: {flight.Flight_Name}</h1>
+                <h1 className='text-center'>{flight.Flight_Name} - {flight.Classes}</h1>
                 <div className='col-md-8'>
                     <form>
                         <div className="mb-3">
