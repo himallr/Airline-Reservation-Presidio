@@ -123,49 +123,26 @@ export const deleteFlightSchedule = async (req, res, next) => {
 
 export const SearchFlight = async (req, res, next) => {
     try {
-        const search = req.query.search || ""
-        let sort = req.query.sort || "sort"
-        let genre = req.query.genre || "All"
+        const { source, destination, flightClass } = req.query;
 
-        const genreOpts = [
-            "Fiction",
-            "scific",
-            "Fantasy",
-            "Mystery",
-            "Biography",
-            "Horror",
-        ];
-        genre === "All" ? (genre = [...genreOpts]) : (genre = req.query.genre.split(","));
-        req.query.rating ? (sort = req.query.sort.split(",")) : (sort = [sort])
-        let sortby = {};
-        if (sort[1]) {
-            sortby[sort[0]] = sort[1];
-        }
-        else {
-            sortby[sort[0]] = "asc";
+        // Build the query object based on provided parameters
+        const query = {};
+        let formattedClass;
+        if (source) query.Source = source;
+        if (destination) query.Destination = destination;
+        if (flightClass) {
+            formattedClass = flightClass.replace(/([a-z])([A-Z])/g, '$1 $2');
+            query.Classes = formattedClass;
         }
 
-        const books = await flight.find({ BookName: { $regex: search, $options: "i" } })
-            .where("Flight_Name")
-            .in([...genre])
-            .sort(sortby)
-        const total = await flight.countDocuments({
-            genre: { $in: [...genre] },
-            name: { $regex: search, $options: "i" }
-        });
+        console.log(query);
 
-        const response = {
-            error: false,
-            total,
-            page: page + 1,
-            limit,
-            genres: genreOpts,
-            books,
-        };
+        // Execute the query
+        const filteredFlights = await flight.find(query);
 
-        return res.status(200).json(response);
+        res.status(200).json(filteredFlights);
+    } catch (error) {
+        console.error('Error filtering flights:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-    catch (err) {
-        console.log(err);
-    }
-}//later
+}
