@@ -8,9 +8,9 @@ const Main = () => {
       <div className='row'>
         <div className='col-md-12'>
           <div className='card border-0 text-center'>
-            <h2 className='text-primary'>Welcome to Our Arline Reservation!</h2>
+            <h2 className='text-primary mt-4 mb-2'>Welcome to Our Arline Reservation!</h2>
             <div className='card-body'>
-              <img className='card-img-top embed-responsive-item' src={flight} alt="slide2" height={400}></img>
+              <img className='card-img-top embed-responsive-item' src={flight} alt="slide2" height={400} width={100}></img>
             </div>
           </div>
         </div>

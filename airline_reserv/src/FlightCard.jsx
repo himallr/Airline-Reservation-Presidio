@@ -14,8 +14,7 @@ const FlightCard = () => {
     return (
         <div className='container'>
             <div className='row mt-5 mb-5'>
-
-                <div className='col-lg-4 col-md-2 col-sm-1 imgs1'>
+                <div className='col-lg-4 col-md-4 col-sm-6 imgs1 mt-2'>
                     {!isAdminLoggedIn ?
                         <Link to={isUserLoggedIn ? `/Book` : `/Login`}>
                             <div className='card'>
@@ -36,7 +35,7 @@ const FlightCard = () => {
                         </Link>
                     }
                 </div>
-                <div className='col-lg-4 col-md-2 col-sm-1 imgs1'>
+                <div className='col-lg-4 col-md-4 col-sm-6 imgs1 mt-2'>
                     {!isAdminLoggedIn ?
                         <Link to={isUserLoggedIn ? `/Bookings` : `/Login`}>
                             <div className='card'>
@@ -57,7 +56,7 @@ const FlightCard = () => {
                         </Link>
                     }
                 </div>
-                <div className='col-lg-4 col-md-2 col-sm-1 imgs1'>
+                <div className='col-lg-4 col-md-4 col-sm-6 imgs1 mt-2'>
                     {!isAdminLoggedIn ?
                         <Link to={isUserLoggedIn ? `/View` : `/Login`}>
                             <div className='card'>
@@ -68,7 +67,7 @@ const FlightCard = () => {
                             </div>
                         </Link>
                         :
-                        <Link to="/View">
+                        <Link to="/ProfileAdmin">
                             <div className='card'>
                                 <img className='card-img-top image' src={img1}></img>
                                 <div class="middle1">

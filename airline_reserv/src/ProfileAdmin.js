@@ -46,7 +46,7 @@ const ProfileAdmin = () => {
                     </div>
                 </div>
                 <div className='col-md-12'>
-                    <h2 className='text-success text-bold mb-4 text-center'>Flights Added</h2>
+                    <h2 className='text-primary text-bold mb-4 text-center'>Flights Added</h2>
                     <div className='table-responsive'>
                         <table className="table table-bordered table-striped">
                             <thead>

@@ -46,8 +46,22 @@ export const getAdminById = async (id) => {
     return resData;
 }
 
+//flights
 export const getFlights = async () => {
     const res = await axios.get("http://localhost:3001/flight/")
+        .catch((e) => {
+            console.log(e);
+        })
+    if (res.status === 500) {
+        return console.log("Unexpected error");
+    }
+    console.log(res.data);
+    const resData = await res.data
+    return resData;
+}
+
+export const getFlightDetails = async (id) => {
+    const res = await axios.get(`http://localhost:3001/flight/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -89,23 +103,11 @@ export const addFlight = async (datas) => {
 
 export const updateFlights = async (id, datas) => {
     const res = await axios.put(`http://localhost:3001/flight/updateFlight/${id}`, {
+        Flight_Name: datas.Flight_Name,
         Timings: datas.Timings,
         Max_seats: datas.Max_seats,
         Pricing: datas.Pricing
     })
-        .catch((e) => {
-            console.log(e);
-        })
-    if (res.status === 500) {
-        return console.log("Unexpected error");
-    }
-    console.log(res.data);
-    const resData = await res.data
-    return resData;
-}
-
-export const getFlightDetails = async (id) => {
-    const res = await axios.get(`http://localhost:3001/flight/${id}`)
         .catch((e) => {
             console.log(e);
         })
@@ -130,6 +132,20 @@ export const getFlightName = async (filter) => {
     return resData;
 }
 
+export const removeFlight = async (id) => {
+    const res = await axios.delete(`http://localhost:3001/flight/delete/${id}`)
+        .catch((e) => {
+            console.log(e);
+        })
+    if (res.status === 500) {
+        return console.log("Unexpected error");
+    }
+    console.log(res.data);
+    const resData = await res.data
+    return resData;
+}
+
+//Bookings
 export const getBookings = async () => {
     const res = await axios.get("http://localhost:3001/booking/")
         .catch((e) => {
@@ -143,12 +159,38 @@ export const getBookings = async () => {
     return resData;
 }
 
-export const BookFlight = async (id, datas, user) => {
+export const getBookingsByID = async (id) => {
+    const res = await axios.get(`http://localhost:3001/booking/${id}`)
+        .catch((e) => {
+            console.log(e);
+        })
+    if (res.status === 500) {
+        return console.log("Unexpected error");
+    }
+    console.log(res.data);
+    const resData = await res.data
+    return resData;
+}
+
+export const getBookingsfromUser = async (id) => {
+    const res = await axios.get(`http://localhost:3001/booking/fromUser/${id}`)
+        .catch((e) => {
+            console.log(e);
+        })
+    if (res.status === 500) {
+        return console.log("Unexpected error");
+    }
+    console.log(res.data);
+    const resData = await res.data
+    return resData;
+}
+
+export const BookFlight = async (id, booking, Passenger, user) => {
     const res = await axios.post("http://localhost:3001/booking/", {
         flights: id,
-        date: datas.date,
-        no_of_seats: datas.no_of_seats,
-
+        date: booking.date,
+        no_of_seats: booking.no_of_seats,
+        Passenger: Passenger,
         user: user
     })
         .catch((e) => {
@@ -164,19 +206,6 @@ export const BookFlight = async (id, datas, user) => {
 
 export const cancelTicket = async (id) => {
     const res = await axios.delete(`http://localhost:3001/booking/Cancel/${id}`)
-        .catch((e) => {
-            console.log(e);
-        })
-    if (res.status === 500) {
-        return console.log("Unexpected error");
-    }
-    console.log(res.data);
-    const resData = await res.data
-    return resData;
-}
-
-export const removeFlight = async (id) => {
-    const res = await axios.delete(`http://localhost:3001/flight/delete/${id}`)
         .catch((e) => {
             console.log(e);
         })

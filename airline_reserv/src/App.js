@@ -17,6 +17,7 @@ import FlightCard from "./FlightCard";
 import Bookings from "./Bookings";
 import BookFlight from "./BookFlight";
 import Book from "./Book";
+import PassengerDetails from "./PassengerDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function App() {
         <Route path="/Bookings" element={<Bookings />}></Route>
         <Route path="/Book" element={<BookFlight />}></Route>
         <Route path="/Book/:id" element={<Book />}></Route>
+        <Route path="/Passenger/:id" element={<PassengerDetails />}></Route>
       </Routes>
       <Footer />
     </div>

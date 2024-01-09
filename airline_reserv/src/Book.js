@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const Book = () => {
     const navigate = useNavigate();
+    const [seats, setSeats] = useState('');
     const [booking, setBoooking] = useState({
         date: '',
         no_of_seats: '',
@@ -11,7 +12,6 @@ const Book = () => {
 
     const [flight, setFlight] = useState([]);
 
-    const user = localStorage.getItem("UserID");
     const { id } = useParams();
 
     useEffect(() => {
@@ -28,12 +28,13 @@ const Book = () => {
 
     const handleUpdate = async () => {
         try {
-            if (booking.no_of_seats > flight.max_seats) {
-                
+            if (booking.no_of_seats > flight.Max_seats) {
+                setSeats("Maximum Seats is: " + flight.Max_seats)
             }
             else {
-                await BookFlight(id, booking, user);
-                navigate("/Bookings")
+                // await BookFlight(id, booking, user);
+                console.log(booking);
+                navigate(`/Passenger/${id}`, { state: { bookingDetails: booking } })
             }
         } catch (error) {
             console.error('Error updating book:', error);
@@ -48,13 +49,16 @@ const Book = () => {
                     <form>
                         <div className="mb-3">
                             <label htmlFor="description" className="form-label h4">Date</label>
-                            <input className="form-control" id="timings" name="date" value={flight.date} onChange={handleChange} />
+                            <input className="form-control" id="timings" type='date' name="date" value={flight.date} onChange={handleChange} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="bookType" className="form-label h4">No.of.Seats in the flight:</label>
                             <input type="number" className="form-control" id="maxseats" name="no_of_seats" value={flight.no_of_seats} onChange={handleChange} />
+                            {
+                                seats && <h6 className='text-danger'>{seats}</h6>
+                            }
                         </div>
-                        <button type="button" className="btn btn-primary d-flex mx-auto" onClick={handleUpdate}>Update Flight Schedule</button>
+                        <button type="button" className="btn btn-primary d-flex mx-auto" onClick={handleUpdate}>Next</button>
                     </form>
                 </div>
             </div>

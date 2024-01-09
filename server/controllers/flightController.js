@@ -79,12 +79,12 @@ export const getFlightByID = async (req, res, next) => {
 }
 
 export const updateFlight = async (req, res) => {
-    const { Timings, Max_seats, Pricing } = req.body;
+    const { Flight_Name, Timings, Max_seats, Pricing } = req.body;
     const id = req.params.id;
     console.log(Pricing);
     let flights;
     try {
-        flights = await flight.findByIdAndUpdate(id, { Timings, Max_seats, Pricing });
+        flights = await flight.findByIdAndUpdate(id, { Flight_Name, Timings, Max_seats, Pricing });
         flights = await flights.save();
     }
     catch (e) {

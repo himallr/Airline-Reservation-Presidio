@@ -4,9 +4,9 @@ import User from "../models/userModel.js";
 import flight from "../models/flightsModel.js";
 
 export const createBooking = async (req, res, next) => {
-    const { flights, date, no_of_seats, user } = req.body;
+    const { flights, date, no_of_seats, Passenger, user } = req.body;
 
-    console.log(flights + " " + date + " " + no_of_seats + " " + user);
+    console.log(flights + " " + date + " " + no_of_seats + " " + Passenger.firstName + " " + Passenger.lastName + " " + user);
     let existflight;
     let existuser;
 
@@ -26,7 +26,7 @@ export const createBooking = async (req, res, next) => {
     }
     let newbooking;
     try {
-        newbooking = new Bookings({ flights, date, no_of_seats, user });
+        newbooking = new Bookings({ flights, date, no_of_seats, Passenger, user });
         console.log(newbooking);
         const session = await mongoose.startSession();
         session.startTransaction();
@@ -76,6 +76,28 @@ export const getAllBookings = async (req, res, next) => {
     }
     return res.status(200).json({ bookings });
 }
+
+export const findBookingsByUserId = async (req, res, next) => {
+    let bookings;
+    const userID = req.params.id;
+    try {
+        const user = await User.findById(userID);
+
+        if (!user) {
+            return res.status(500).json({ message: "User Not Found" });
+        }
+
+        bookings = await Bookings.find({ user: userID }).populate("flights");
+        console.log(bookings);
+
+    } catch (e) {
+        console.log(e);
+    }
+    if (!bookings) {
+        return res.status(500).json({ message: "Request failed" });
+    }
+    return res.status(200).json({ bookings });
+};
 
 export const deleteBookings = async (req, res, next) => {
     const id = req.params.id;

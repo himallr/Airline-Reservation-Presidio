@@ -1,5 +1,27 @@
 import mongoose from "mongoose";
 
+const passengerSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    middleName: {
+        type: String,
+    },
+    Age: {
+        type: Number,
+        required: true
+    },
+    Phn_No: {
+        type: Number,
+        required: true
+    }
+});
+
 const Bookingsdb = new mongoose.Schema(
     {
         flights: {
@@ -19,7 +41,8 @@ const Bookingsdb = new mongoose.Schema(
             type: mongoose.Types.ObjectId,
             ref: "User",
             required: true,
-        }
+        },
+        Passenger: passengerSchema,
     }
 );
 

@@ -18,16 +18,22 @@ const AddFlights = () => {
 
     const handleChange = (e) => {
         let inputValue, isValidInput
-        console.log(e.target.type);
         if (e.target.type === "text") {
+            console.log(e.target.value);
             inputValue = e.target.value;
             isValidInput = /^[a-zA-Z\s]+$/.test(inputValue);
+            if (isValidInput)
+                setInputs((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                }));
         }
-        if (isValidInput !== 0)
+        else {
             setInputs((prevState) => ({
                 ...prevState,
                 [e.target.name]: e.target.value,
             }));
+        }
 
     };
     const showSuccessToast = (message) => {
@@ -42,7 +48,7 @@ const AddFlights = () => {
         addFlight({ ...inputs })
             .then((res) => {
                 console.log(res);
-                navigate("/ProfileAdmin")
+                //navigate("/ProfileAdmin")
                 showSuccessToast("Successfully added")
             })
             .catch((err) => console.log(err));
@@ -130,9 +136,9 @@ const AddFlights = () => {
                                                 <div className="form-outline">
                                                     <label className="form-label" for="form3Example1n">Classes</label>
                                                     <select className='form-select' value={inputs.Classes} onChange={handleChange} name='Classes'>
-                                                        <option value="Business Class">Business Class</option>
-                                                        <option value="Premium Class">Premium Class</option>
-                                                        <option value="Business Premium Class">Business Premium Class</option>
+                                                        <option value="Economy Class" selected={inputs.Classes === "Economy Class"}>Economy Class</option>
+                                                        <option value="Business Class" selected={inputs.Classes === "Business Class"}>Business Class</option>
+                                                        <option value="Business Premium Class" selected={inputs.Classes === "Business Premium Class"}>Business Premium Class</option>
                                                     </select>
                                                     {/* <input value={inputs.Classes} onChange={handleChange} name="Classes" type="text" id="form3Example1n" className="form-control form-control-lg" /> */}
 

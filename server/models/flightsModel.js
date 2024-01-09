@@ -1,19 +1,5 @@
 import mongoose from 'mongoose';
 
-const passengerSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-        required: true,
-    },
-    middleName: {
-        type: String,
-    },
-});
-
 const flightSchema = new mongoose.Schema({
     Flight_No: {
         type: Number,
@@ -23,6 +9,7 @@ const flightSchema = new mongoose.Schema({
     Flight_Name: {
         type: String,
         required: true,
+        unique: false
     },
     Source: {
         type: String,
@@ -44,7 +31,6 @@ const flightSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    Passenger: passengerSchema,
     Classes: {
         type: String,
         required: true,

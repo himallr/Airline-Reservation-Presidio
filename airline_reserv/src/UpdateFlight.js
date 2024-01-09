@@ -6,20 +6,21 @@ const UpdateFlight = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [flight, setFlight] = useState({
+        UpdateFlight: '',
         Timings: '',
         Max_seats: '',
         Pricing: '',
     });
 
     console.log(flight);
-    
+
     // Fetch the book details when the component mounts
     useEffect(() => {
         const fetchFlightDetails = async () => {
             try {
                 const flightDetails = await getFlightDetails(id);
                 setFlight(flightDetails.flights);
-                console.log(flight,"id");
+                console.log(flight, "id");
             } catch (error) {
                 console.error('Error fetching book details:', error);
             }
@@ -29,9 +30,9 @@ const UpdateFlight = () => {
     }, [id]);
 
     console.log(flight);
-    
+
     const handleChange = (e) => {
-        setFlight((prevFlight)=>({ ...prevFlight, [e.target.name]: e.target.value }));
+        setFlight((prevFlight) => ({ ...prevFlight, [e.target.name]: e.target.value }));
     };
 
     const handleUpdate = async () => {
@@ -46,11 +47,15 @@ const UpdateFlight = () => {
 
     return (
         <div className="container mt-5 mb-5">
-            <h2 className='text-success text-bold mt-5 mb-4 text-center'>Update Flight Schedule</h2>
+            <h2 className='text-primary text-bold mt-5 mb-4 text-center'>Update Flight Schedule</h2>
             <form>
+            <div className="mb-3">
+                    <label htmlFor="description" className="form-label">Flight Name</label>
+                    <input className="form-control" id="flightname" type="text" name="Flight_Name" value={flight.Flight_Name} onChange={handleChange} />
+                </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Timings</label>
-                    <input className="form-control" id="timings" name="Timings" value={flight.Timings} onChange={handleChange} />
+                    <input className="form-control" id="timings" type="time" name="Timings" value={flight.Timings} onChange={handleChange} />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="bookType" className="form-label">Maximum Seats for the flight:</label>
