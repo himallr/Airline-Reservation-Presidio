@@ -26,7 +26,7 @@ const BookFlights = () => {
         console.log(formData);
     };
 
-    const places = ["Mumbai", "Chennai", "Delhi", "Kolkata", "Bangalore", "Pune", "Hyderabad", "Virudhunagar"]
+    const places = ["Madurai","Mumbai", "Chennai", "Delhi", "Kolkata", "Bangalore", "Pune", "Hyderabad", "Virudhunagar"]
 
     console.log(places);
     return (
